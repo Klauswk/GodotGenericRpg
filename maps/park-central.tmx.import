@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/park-central.tmx-4a76195f15d145191abe2725d932472c.scn"
+
+[deps]
+
+source_file="res://maps/park-central.tmx"
+dest_files=[ "res://.import/park-central.tmx-4a76195f15d145191abe2725d932472c.scn" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+uv_clip=true
+image_flags=7
+collision_layer=1
+embed_internal_images=false
+save_tiled_properties=false
+add_background=true
+post_import_script=""
