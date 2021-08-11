@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://battle/battle_scene.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vboxActions" type="VBoxContainer" parent="."]
+margin_top = 63.0
+margin_right = 124.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 65.8566, -43.1543 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnAtk" type="Button" parent="vboxActions"]
+margin_right = 124.0
+margin_bottom = 20.0
+text = "Attack"
+
+[node name="btnRun" type="Button" parent="vboxActions"]
+margin_top = 24.0
+margin_right = 124.0
+margin_bottom = 44.0
+text = "Run"
+
+[node name="vboxInfo" type="VBoxContainer" parent="."]
+margin_left = 154.058
+margin_top = 62.4388
+margin_right = 278.058
+margin_bottom = 109.439
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hpContainer" type="HBoxContainer" parent="vboxInfo"]
+margin_right = 124.0
+margin_bottom = 14.0
+alignment = 2
+
+[node name="hp" type="Label" parent="vboxInfo/hpContainer"]
+margin_left = 61.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "HP:"
+
+[node name="hpQuantity" type="Label" parent="vboxInfo/hpContainer"]
+margin_left = 87.0
+margin_right = 124.0
+margin_bottom = 14.0
+text = "20/20"
+
+[node name="mpContainer" type="HBoxContainer" parent="vboxInfo"]
+margin_top = 18.0
+margin_right = 124.0
+margin_bottom = 32.0
+alignment = 2
+
+[node name="mp" type="Label" parent="vboxInfo/mpContainer"]
+margin_left = 59.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "MP:"
+
+[node name="mpQuantity" type="Label" parent="vboxInfo/mpContainer"]
+margin_left = 87.0
+margin_right = 124.0
+margin_bottom = 14.0
+text = "20/20"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 128.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemyName" type="Label" parent="HBoxContainer"]
+margin_top = 13.0
+margin_right = 43.0
+margin_bottom = 27.0
+text = "Enemy"

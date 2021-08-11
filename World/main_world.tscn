@@ -1,84 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Player/player.png" type="Texture" id=1]
-[ext_resource path="res://Player/player.gd" type="Script" id=2]
+[ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/park-central.tmx" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.32872, 7.18589 )
+[node name="Game" type="Node2D"]
 
-[sub_resource type="Animation" id=2]
-resource_name = "RunRight"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 4, 5 ]
-}
+[node name="world" type="Node" parent="."]
 
-[sub_resource type="Animation" id=3]
-resource_name = "RunUp"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 2, 3 ]
-}
+[node name="map" type="Node" parent="world"]
 
-[sub_resource type="Animation" id=4]
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[node name="World" type="Node2D"]
-
-[node name="park-central" parent="." instance=ExtResource( 3 )]
+[node name="map" parent="world/map" instance=ExtResource( 3 )]
 position = Vector2( 0.13065, 8.36318 )
 
-[node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 100.111, 51.2331 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="player"]
-position = Vector2( 1.12373, 0.749146 )
-texture = ExtResource( 1 )
-hframes = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2( 1.26276, 0.701538 )
-shape = SubResource( 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
-anims/RunRight = SubResource( 2 )
-anims/RunUp = SubResource( 3 )
-anims/Teste = SubResource( 4 )
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-current = true
+[node name="player" parent="world/map" instance=ExtResource( 1 )]
+position = Vector2( 100.111, 50.6719 )
+initial_position_x = 100
+initial_position_y = 50
