@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 const MAX_SPEED = 64;
 
 var velocity = Vector2.ZERO
@@ -19,13 +21,11 @@ export var initial_position_y: int
 
 var hasBattle = false
 
-var world: Node
+var character: Character = preload("res://domain/character.gd").new()
 
 func _ready():
 	position.x = initial_position_x
 	position.y = initial_position_y
-
-	world = get_tree().root.get_child(0).get_child(0)
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO

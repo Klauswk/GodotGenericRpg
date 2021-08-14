@@ -2,7 +2,7 @@ extends Node
 
 onready var map = $map
 
-onready var player = $player
+onready var player: Player = $player
 
 func _on_player_change_map(next_map, position_x, position_y):
 	
@@ -11,24 +11,32 @@ func _on_player_change_map(next_map, position_x, position_y):
 	
 	map.get_child(0).queue_free()
 	map.add_child(next_map);
-	
 
 func _on_player_battle():
 	var battle_scene = preload("res://battle/battle_scene.tscn").instance()
-	var character = preload("res://domain/character.gd").new()
 	
-	battle_scene.initialize(character, get_enemy())
+	var enemy: Enemy = get_enemy()
+	battle_scene.initialize(player.character, get_enemy())
 	remove_child(map)
 	remove_child(player)
 	add_child(battle_scene)
 	
+	player.character.connect("defeated", self, "_on_player_defeated")
+	enemy.connect("defeated", self, "_on_enemy_defeated")
 	battle_scene.connect("battle_end", self, "_on_battle_end")
-	
+	battle_scene.connect("escape", self, "_on_escape")
+
+
 func _on_battle_end():
+	_on_escape()
+
+func _on_escape():
 	get_child(0).queue_free()
 
 	add_child(map)
 	add_child(player)
+		
+
 
 func get_enemy() -> Enemy:
 	var dict = {}

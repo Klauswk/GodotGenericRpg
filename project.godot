@@ -23,17 +23,23 @@ _global_script_classes=[ {
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://domain/enemy.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/player.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "CombatAttribute": "",
-"Enemy": ""
+"Enemy": "",
+"Player": ""
 }
 
 [application]
 
 config/name="DW2023"
-run/main_scene="res://World/main_world.tscn"
+run/main_scene="res://world/main_world.tscn"
 config/icon="res://icon.png"
 
 [display]
