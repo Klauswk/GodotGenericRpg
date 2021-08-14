@@ -45,7 +45,7 @@ func _physics_process(delta):
 		elif input_vector.y < 0:
 			animationPlayer.play("RunUp")
 	
-		var shouldHaveBattle = randi() % 10
+		var shouldHaveBattle = randi() % 100
 	
 		if shouldHaveBattle == 5:
 			print_debug("BATTLE!")

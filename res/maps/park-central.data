@@ -1,0 +1,24 @@
+{
+    "enemies": [
+        {
+            "combat_name": "Goblin",
+            "level": 1,
+            "max_hp": 15,
+            "strength": 10,
+            "defense": 5,
+            "intelligence": 2,
+            "speed": 2,
+            "experience": 10
+        },
+        {
+            "combat_name": "Cow",
+            "level": 1,
+            "max_hp": 10,
+            "strength": 1,
+            "defense": 6,
+            "intelligence": 1,
+            "speed": 3,
+            "experience": 20
+        }
+    ]
+}

@@ -46,13 +46,13 @@ margin_right = 124.0
 margin_bottom = 14.0
 alignment = 2
 
-[node name="hp" type="Label" parent="vboxInfo/hpContainer"]
+[node name="lbHp" type="Label" parent="vboxInfo/hpContainer"]
 margin_left = 61.0
 margin_right = 83.0
 margin_bottom = 14.0
 text = "HP:"
 
-[node name="hpQuantity" type="Label" parent="vboxInfo/hpContainer"]
+[node name="lbCurrentHp" type="Label" parent="vboxInfo/hpContainer"]
 margin_left = 87.0
 margin_right = 124.0
 margin_bottom = 14.0
@@ -64,13 +64,13 @@ margin_right = 124.0
 margin_bottom = 32.0
 alignment = 2
 
-[node name="mp" type="Label" parent="vboxInfo/mpContainer"]
+[node name="lbMp" type="Label" parent="vboxInfo/mpContainer"]
 margin_left = 59.0
 margin_right = 83.0
 margin_bottom = 14.0
 text = "MP:"
 
-[node name="mpQuantity" type="Label" parent="vboxInfo/mpContainer"]
+[node name="lbCurrentMp" type="Label" parent="vboxInfo/mpContainer"]
 margin_left = 87.0
 margin_right = 124.0
 margin_bottom = 14.0
@@ -90,3 +90,22 @@ margin_top = 13.0
 margin_right = 43.0
 margin_bottom = 27.0
 text = "Enemy"
+
+[node name="hpContainer" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 47.0
+margin_right = 110.0
+margin_bottom = 40.0
+alignment = 2
+
+[node name="lbHp" type="Label" parent="HBoxContainer/hpContainer"]
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 27.0
+text = "HP:"
+
+[node name="lbCurrentHp" type="Label" parent="HBoxContainer/hpContainer"]
+margin_left = 26.0
+margin_top = 13.0
+margin_right = 63.0
+margin_bottom = 27.0
+text = "20/20"

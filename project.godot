@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "CombatAttribute",
+"class": "Character",
+"language": "GDScript",
+"path": "res://domain/character.gd"
+}, {
+"base": "Node",
+"class": "CombatAttribute",
+"language": "GDScript",
+"path": "res://domain/combat_attribute.gd"
+}, {
+"base": "CombatAttribute",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://domain/enemy.gd"
+} ]
+_global_script_class_icons={
+"Character": "",
+"CombatAttribute": "",
+"Enemy": ""
+}
+
 [application]
 
 config/name="DW2023"
