@@ -10,6 +10,10 @@ onready var sprite = $Sprite
 
 onready var collider = $CollisionShape2D
 
+signal change_map(map, position_x, position_y)
+
+signal battle
+
 export var initial_position_x: int
 export var initial_position_y: int
 
@@ -20,11 +24,8 @@ var world: Node
 func _ready():
 	position.x = initial_position_x
 	position.y = initial_position_y
-			
+
 	world = get_tree().root.get_child(0).get_child(0)
-	var map = world.get_child(0)
-	
-	hasBattle = map.get_meta("battle")
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -47,10 +48,8 @@ func _physics_process(delta):
 		var shouldHaveBattle = randi() % 10
 	
 		if shouldHaveBattle == 5:
-			print_debug("BATTLE!");
-			var battle_scene = preload("res://battle/battle_scene.tscn").instance()
-			
-			get_tree().change_scene_to(battle_scene)
+			print_debug("BATTLE!")
+			emit_signal("battle")
 			
 				
 		velocity = input_vector  * MAX_SPEED
@@ -69,11 +68,16 @@ func _physics_process(delta):
 			var scene_location = "res://maps/" + name.right(6) + ".tmx"
 			var next_scene = load(scene_location).instance()
 			
-			position.x = int(position_x)
-			position.y = int(position_y)
+			emit_signal("change_map", next_scene, position_x, position_y)
 			
-			next_scene.set_name("map")
-			world.get_child(0).free()
-			world.add_child(next_scene);
-			world.move_child(next_scene, 0)
-			
+func get_frame(): 
+	return sprite.frame
+	
+func set_frame(frame: int):
+	sprite.frame = frame
+
+func is_flip():
+	return sprite.flip_h
+
+func set_flip(flip: bool):
+	sprite.flip_h = flip

@@ -1,5 +1,6 @@
 extends Control
 
+signal battle_end
 
 func _ready():
 	$Menu/CenterRow/VBoxContainer/btnNewGame.grab_focus()
@@ -9,3 +10,4 @@ func _ready():
 
 func _on_btn_pressed(scene_to_load):
 	print_debug(scene_to_load)
+	emit_signal("battle_end")

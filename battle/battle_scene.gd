@@ -4,6 +4,8 @@ onready var hpQuantity = $vboxInfo/HBoxContainer/hpQuantity
 onready var mpQuantity = $vboxInfo/HBoxContainer/mpQuantity
 onready var enemy = $HBoxContainer/enemyName
 
+signal battle_end
+
 func _ready():
 	$vboxActions/btnAtk.grab_focus()
 	
@@ -15,4 +17,8 @@ func _ready():
 			button.connect("pressed", self, "_on_btn_pressed", [button.text])
 
 func _on_btn_pressed(scene_to_load):
-	print_debug(scene_to_load)
+	print_debug("entra aqui")
+	if "Run" in scene_to_load:
+		print_debug("emit battle_end")
+		emit_signal("battle_end")
+	
