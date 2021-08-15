@@ -9,27 +9,40 @@ func _ready():
 	
 	for object in tilemap.get_children():
 		process_node(object)
-		
+	
+	player.connect("collided", self, "_on_collision")
+	
 func process_node(node: Node):
 	if "actions" in node.name:
 		for action in node.get_children():
 			create_action(action)
 
 func create_action(action):
-	print_debug("name ", action.name)
-	print_debug("item_id ", action.get_meta("item_id"))
-	print_debug("quantity ", action.get_meta("quantity"))
 	
 	var new_action = null
 	
 	if "Chest" in action.name:
 		var chest = preload("res://chest/chest.tscn").instance()
 		new_action = preload("res://actions/open_chest_action.gd").new()
-		new_action.initialize(map, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
+		new_action.initialize(action.name, map, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
 		action.add_child(chest)
+	elif "go_to" in action.name:
+		new_action = preload("res://actions/go_to_action.gd").new()
+		new_action.initialize(action.name, map, int(action.get_meta("position_x")), int(action.get_meta("position_y")))
+		new_action.connect("change_map", self, "_on_player_change_map")
 	
+	add_child(new_action)
 	
+func _on_collision(collided: Object):
+	var name = collided.get("name");
+	print_debug("collided ", name)
+	print_debug("nodes in group: ", get_tree().get_nodes_in_group("map_actions").size())
 	
+	for action in get_tree().get_nodes_in_group("map_actions"):
+		print_debug("action name ", action.action_name)
+		if name in action.action_name:
+			action.interact()
+
 
 func _on_player_change_map(next_map, position_x, position_y):
 	

@@ -2,11 +2,10 @@ extends Node
 
 class_name MapAction
 
-signal finished
-var local_map
+var map: Node2D
+var action_name: String
 
-func _ready():
-	add_to_group("map_action")
+signal finished
 
 func interact():
 	print("No implementation for this method")

@@ -18,4 +18,3 @@ initial_position_x = 100
 initial_position_y = 50
 
 [connection signal="battle" from="player" to="." method="_on_player_battle"]
-[connection signal="change_map" from="player" to="." method="_on_player_change_map"]

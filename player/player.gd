@@ -12,7 +12,7 @@ onready var sprite = $Sprite
 
 onready var collider = $CollisionShape2D
 
-signal change_map(map, position_x, position_y)
+signal collided(collided)
 
 signal battle
 
@@ -59,16 +59,7 @@ func _physics_process(delta):
 	var kinematidCollision = move_and_collide(velocity * delta)	
 	
 	if kinematidCollision != null:
-		var collided = kinematidCollision.collider
-		var name = collided.get("name");
-		var position_x = collided.get_meta("position_x")
-		var position_y = collided.get_meta("position_y")
-		if "go_to_" in name:
-			print_debug("Moving to: " + name);
-			var scene_location = "res://maps/" + name.right(6) + ".tmx"
-			var next_scene = load(scene_location).instance()
-			
-			emit_signal("change_map", next_scene, position_x, position_y)
+		emit_signal("collided", kinematidCollision.collider)
 			
 func get_frame(): 
 	return sprite.frame
