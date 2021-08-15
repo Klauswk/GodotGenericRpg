@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://domain/enemy.gd"
 }, {
+"base": "Node",
+"class": "MapAction",
+"language": "GDScript",
+"path": "res://actions/map_actions.gd"
+}, {
+"base": "MapAction",
+"class": "OpenChestAction",
+"language": "GDScript",
+"path": "res://actions/open_chest_action.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "Character": "",
 "CombatAttribute": "",
 "Enemy": "",
+"MapAction": "",
+"OpenChestAction": "",
 "Player": ""
 }
 

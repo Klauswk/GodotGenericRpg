@@ -1,8 +1,35 @@
 extends Node
 
-onready var map = $map
+onready var map: Node2D = $map
 
 onready var player: Player = $player
+
+func _ready():
+	var tilemap = map.get_child(0)
+	
+	for object in tilemap.get_children():
+		process_node(object)
+		
+func process_node(node: Node):
+	if "actions" in node.name:
+		for action in node.get_children():
+			create_action(action)
+
+func create_action(action):
+	print_debug("name ", action.name)
+	print_debug("item_id ", action.get_meta("item_id"))
+	print_debug("quantity ", action.get_meta("quantity"))
+	
+	var new_action = null
+	
+	if "Chest" in action.name:
+		var chest = preload("res://chest/chest.tscn").instance()
+		new_action = preload("res://actions/open_chest_action.gd").new()
+		new_action.initialize(map, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
+		action.add_child(chest)
+	
+	
+	
 
 func _on_player_change_map(next_map, position_x, position_y):
 	
@@ -35,7 +62,6 @@ func _on_escape():
 
 	add_child(map)
 	add_child(player)
-		
 
 
 func get_enemy() -> Enemy:
