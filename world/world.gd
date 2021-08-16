@@ -1,63 +1,31 @@
 extends Node
 
-onready var map: Node2D = $map
-
 onready var player: Player = $player
 
-func _ready():
-	var tilemap = map.get_child(0)
-	
-	for object in tilemap.get_children():
-		process_node(object)
-	
-	player.connect("collided", self, "_on_collision")
-	
-func process_node(node: Node):
-	if "actions" in node.name:
-		for action in node.get_children():
-			create_action(action)
+var scene
 
-func create_action(action):
+func _ready():
+	scene = preload("res://maps/park-central.tmx").instance()
+	scene.set_script(preload("res://domain/map_script.gd"))
+	scene.player = player
 	
-	var new_action = null
-	
-	if "Chest" in action.name:
-		var chest = preload("res://chest/chest.tscn").instance()
-		new_action = preload("res://actions/open_chest_action.gd").new()
-		new_action.initialize(action.name, map, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
-		action.add_child(chest)
-	elif "go_to" in action.name:
-		new_action = preload("res://actions/go_to_action.gd").new()
-		new_action.initialize(action.name, map, int(action.get_meta("position_x")), int(action.get_meta("position_y")))
-		new_action.connect("change_map", self, "_on_player_change_map")
-	
-	add_child(new_action)
+	add_child(scene)
+	player.connect("collided", self, "_on_collision")
 	
 func _on_collision(collided: Object):
 	var name = collided.get("name");
-	print_debug("collided ", name)
-	print_debug("nodes in group: ", get_tree().get_nodes_in_group("map_actions").size())
 	
 	for action in get_tree().get_nodes_in_group("map_actions"):
-		print_debug("action name ", action.action_name)
 		if name in action.action_name:
 			action.interact()
-
-
-func _on_player_change_map(next_map, position_x, position_y):
-	
-	player.position.x = int(position_x)
-	player.position.y = int(position_y)
-	
-	map.get_child(0).queue_free()
-	map.add_child(next_map);
 
 func _on_player_battle():
 	var battle_scene = preload("res://battle/battle_scene.tscn").instance()
 	
 	var enemy: Enemy = get_enemy()
 	battle_scene.initialize(player.character, get_enemy())
-	remove_child(map)
+	
+	remove_child(scene)
 	remove_child(player)
 	add_child(battle_scene)
 	
@@ -71,16 +39,20 @@ func _on_battle_end():
 	_on_escape()
 
 func _on_escape():
-	get_child(0).queue_free()
+	for scene in get_tree().get_nodes_in_group("battle_scene"):
+		scene.queue_free()
 
-	add_child(map)
+	add_child(scene)
 	add_child(player)
 
 
 func get_enemy() -> Enemy:
 	var dict = {}
 	var file = File.new()
-	var file_location = "res://res/maps/" + map.get_child(0).name + ".data"
+	
+	var current_map = get_tree().get_nodes_in_group("map").front()
+		
+	var file_location = "res://res/maps/" + current_map.name + ".data"
 	
 	print_debug("File location: " + file_location)
 	

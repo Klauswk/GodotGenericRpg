@@ -45,11 +45,10 @@ func _physics_process(delta):
 		elif input_vector.y < 0:
 			animationPlayer.play("RunUp")
 	
-		var shouldHaveBattle = randi() % 100
-	
-		if shouldHaveBattle == 5:
-			print_debug("BATTLE!")
-			emit_signal("battle")
+		if hasBattle:
+			var shouldHaveBattle = randi() % 100
+			if shouldHaveBattle == 5:
+				emit_signal("battle")
 			
 				
 		velocity = input_vector  * MAX_SPEED

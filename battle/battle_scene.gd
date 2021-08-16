@@ -15,6 +15,8 @@ signal escape
 signal miss_attack(attacker)
 
 func _ready():
+	add_to_group("battle_scene")
+
 	$vboxActions/btnAtk.grab_focus()
 	
 	lb_enemy.text = enemy.combat_name
