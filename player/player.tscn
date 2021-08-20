@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player.png" type="Texture" id=2]
+[ext_resource path="res://player/attention.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.32872, 7.18589 )
@@ -54,19 +55,18 @@ tracks/0/keys = {
 }
 
 [node name="player" type="KinematicBody2D"]
-position = Vector2( 100.111, 51.2331 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.12373, 0.749146 )
+position = Vector2( -7.62939e-06, 0 )
 texture = ExtResource( 2 )
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.26276, 0.701538 )
+position = Vector2( -7.62939e-06, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -75,4 +75,10 @@ anims/RunUp = SubResource( 3 )
 anims/Teste = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -7.62939e-06, 0 )
 current = true
+
+[node name="Attention" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -16 )
+texture = ExtResource( 3 )

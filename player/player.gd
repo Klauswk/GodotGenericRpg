@@ -19,7 +19,12 @@ signal battle
 export var initial_position_x: int
 export var initial_position_y: int
 
+onready var attention_icon = $Attention
+
 var hasBattle = false
+
+var mapAction: MapAction
+
 
 var character: Character = preload("res://domain/character.gd").new()
 
@@ -27,13 +32,23 @@ func _ready():
 	position.x = initial_position_x
 	position.y = initial_position_y
 
+
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
-	if input_vector != Vector2.ZERO:
+	var actionPress = Input.is_action_pressed("ui_accept")
+
+	if mapAction != null:
+		attention_icon.show()
+	else:
+		attention_icon.hide()
+		
+	if mapAction != null && actionPress:
+		mapAction.interact()
+	elif input_vector != Vector2.ZERO:
 		if input_vector.x > 0:
 			animationPlayer.play("RunRight")
 			sprite.flip_h = false
@@ -44,7 +59,7 @@ func _physics_process(delta):
 			animationPlayer.play("Teste")
 		elif input_vector.y < 0:
 			animationPlayer.play("RunUp")
-	
+		
 		if hasBattle:
 			var shouldHaveBattle = randi() % 100
 			if shouldHaveBattle == 5:
@@ -60,14 +75,7 @@ func _physics_process(delta):
 	if kinematidCollision != null:
 		emit_signal("collided", kinematidCollision.collider)
 			
-func get_frame(): 
-	return sprite.frame
-	
-func set_frame(frame: int):
-	sprite.frame = frame
+func interable(mapAction):
+	self.mapAction = mapAction
 
-func is_flip():
-	return sprite.flip_h
 
-func set_flip(flip: bool):
-	sprite.flip_h = flip
