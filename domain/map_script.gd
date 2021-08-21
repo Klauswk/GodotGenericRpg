@@ -1,6 +1,7 @@
 extends Node
 
 var player: Player
+var textBox: GameTextBox
 
 func _ready():
 	add_to_group("map")
@@ -29,6 +30,7 @@ func create_action(action):
 		new_action.position.x = action.position.x + 8
 		new_action.position.y = action.position.y + 8
 		new_action.initialize(action.name, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
+		new_action.connect("text_show", self,"_on_text_show")
 		action.queue_free()
 	elif "go_to" in action.name:
 		new_action = load("res://actions/go_to_action.gd").new()
@@ -54,7 +56,11 @@ func _on_player_change_map(next_map, position_x, position_y):
 		game.add_child(next_map)
 		game.scene = next_map
 	
-
+func _on_text_show(text: String):
+	self.textBox.set_text(text)
+	self.player.pause_input = true
+	yield(self.textBox, "finished")
+	self.player.pause_input = false
 
 func clear_map_info():
 	for action in get_tree().get_nodes_in_group("map_actions"):

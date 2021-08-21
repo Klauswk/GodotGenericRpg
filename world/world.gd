@@ -1,13 +1,15 @@
 extends Node
 
 onready var player: Player = $player
+onready var textbox: GameTextBox = $textbox
 
 var scene
 
 func _ready():
 	scene = preload("res://maps/park-central.tmx").instance()
-	scene.set_script(preload("res://domain/map_script.gd"))
+	scene.set_script(load("res://domain/map_script.gd"))
 	scene.player = player
+	scene.textBox = textbox
 	
 	add_child(scene)
 	player.connect("collided", self, "_on_collision")

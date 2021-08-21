@@ -25,6 +25,7 @@ var hasBattle = false
 
 var mapAction: MapAction
 
+var pause_input = false
 
 var character: Character = preload("res://domain/character.gd").new()
 
@@ -36,10 +37,12 @@ func _ready():
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	var actionPress = false
 	
-	var actionPress = Input.is_action_pressed("ui_accept")
+	if !pause_input:
+		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		actionPress = Input.is_action_pressed("ui_accept")
 
 	if mapAction != null:
 		attention_icon.show()

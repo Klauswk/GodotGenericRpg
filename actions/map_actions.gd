@@ -6,6 +6,7 @@ var map: Node2D
 var action_name: String
 
 signal finished
+signal text_show(text)
 
 func interact():
 	print("No implementation for this method")

@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://domain/enemy.gd"
 }, {
+"base": "CanvasLayer",
+"class": "GameTextBox",
+"language": "GDScript",
+"path": "res://textbox/textbox.gd"
+}, {
 "base": "MapAction",
 "class": "GotoAction",
 "language": "GDScript",
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "Character": "",
 "CombatAttribute": "",
 "Enemy": "",
+"GameTextBox": "",
 "GotoAction": "",
 "MapAction": "",
 "OpenChestAction": "",

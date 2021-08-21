@@ -15,5 +15,6 @@ func _on_body_exited(body):
 		body.interable(null)
 
 func interact():
+	emit_signal("text_show", str("Just got an ", self.item_id))
 	queue_free()
 	
