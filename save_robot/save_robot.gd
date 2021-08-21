@@ -1,4 +1,6 @@
-extends OpenChestAction
+extends MapAction
+
+class_name SaveNpc
 
 onready var area2D = $Area2D
 
@@ -15,6 +17,4 @@ func _on_body_exited(body):
 		body.interable(null)
 
 func interact():
-	emit_signal("text_show", str("Just got an ", self.item_id))
-	queue_free()
-	
+	emit_signal("text_show", str("Saving the game"))

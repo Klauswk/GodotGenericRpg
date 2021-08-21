@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://player/player.gd"
+}, {
+"base": "MapAction",
+"class": "SaveNpc",
+"language": "GDScript",
+"path": "res://save_robot/save_robot.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "GotoAction": "",
 "MapAction": "",
 "OpenChestAction": "",
-"Player": ""
+"Player": "",
+"SaveNpc": ""
 }
 
 [application]

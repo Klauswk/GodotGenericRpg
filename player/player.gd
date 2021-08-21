@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if !pause_input:
 		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 		input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-		actionPress = Input.is_action_pressed("ui_accept")
+		actionPress = Input.is_action_just_pressed("ui_accept")
 
 	if mapAction != null:
 		attention_icon.show()

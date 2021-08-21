@@ -34,8 +34,13 @@ func create_action(action):
 		action.queue_free()
 	elif "go_to" in action.name:
 		new_action = load("res://actions/go_to_action.gd").new()
-		new_action.initialize(action.name, int(action.get_meta("position_x")), int(action.get_meta("position_y")), player)
+		new_action.initialize(action.name, int(action.get_meta("position_x")), int(action.get_meta("position_y")), player, textBox)
 		new_action.connect("change_map", self, "_on_player_change_map")
+	elif "npc" in action.name:
+		new_action = preload("res://save_robot/save_robot.tscn").instance()
+		new_action.position.x = action.position.x + 8
+		new_action.position.y = action.position.y + 8
+		new_action.connect("text_show", self,"_on_text_show")
 	
 	new_action.name = action.name
 	add_child(new_action)
