@@ -25,10 +25,11 @@ func create_action(action):
 	var new_action = null
 	
 	if "Chest" in action.name:
-		var chest = preload("res://chest/chest.tscn").instance()
-		new_action = preload("res://actions/open_chest_action.gd").new()
+		new_action = preload("res://chest/chest.tscn").instance()
+		new_action.position.x = action.position.x + 8
+		new_action.position.y = action.position.y + 8
 		new_action.initialize(action.name, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
-		action.add_child(chest)
+		action.queue_free()
 	elif "go_to" in action.name:
 		new_action = load("res://actions/go_to_action.gd").new()
 		new_action.initialize(action.name, int(action.get_meta("position_x")), int(action.get_meta("position_y")), player)

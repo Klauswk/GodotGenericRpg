@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="5">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="6">
  <properties>
   <property name="battle" type="bool" value="true"/>
  </properties>
@@ -45,6 +45,12 @@
    <properties>
     <property name="position_x" value="130"/>
     <property name="position_y" value="32"/>
+   </properties>
+  </object>
+  <object id="5" name="go_to_wire-forest-entrance" x="247.875" y="86.75" width="18.5" height="17.25">
+   <properties>
+    <property name="position_x" value="56"/>
+    <property name="position_y" value="36"/>
    </properties>
   </object>
  </objectgroup>

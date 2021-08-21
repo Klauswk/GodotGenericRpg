@@ -15,5 +15,5 @@ func _on_body_exited(body):
 		body.interable(null)
 
 func interact():
-	get_parent().queue_free()
+	queue_free()
 	
