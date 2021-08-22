@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player.png" type="Texture" id=2]
@@ -8,7 +8,33 @@
 extents = Vector2( 7.32872, 7.18589 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "RunRight"
+resource_name = "RunLeft"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -22,21 +48,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 4, 5 ]
 }
-
-[sub_resource type="Animation" id=3]
-resource_name = "RunUp"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 2, 3 ]
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 270.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -51,10 +73,53 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
 }
 
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 6.31504, 4.40375 )
+
 [node name="player" type="KinematicBody2D"]
+position = Vector2( -4.76837e-07, 1.19209e-05 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -63,16 +128,18 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -7.62939e-06, 0 )
 texture = ExtResource( 2 )
-hframes = 6
+hframes = 8
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -7.62939e-06, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RunRight = SubResource( 2 )
-anims/RunUp = SubResource( 3 )
-anims/Teste = SubResource( 4 )
+anims/RunLeft = SubResource( 2 )
+anims/RunRight = SubResource( 3 )
+anims/RunUp = SubResource( 4 )
+anims/Teste = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -7.62939e-06, 0 )
@@ -82,3 +149,15 @@ current = true
 visible = false
 position = Vector2( 0, -16 )
 texture = ExtResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+rotation = 4.71239
+__meta__ = {
+"_gizmo_extents_": 22.6
+}
+
+[node name="Area2D" type="Area2D" parent="Position2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Area2D"]
+position = Vector2( 0, 8 )
+shape = SubResource( 6 )

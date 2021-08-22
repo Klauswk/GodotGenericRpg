@@ -15,3 +15,6 @@ func _ready():
 func interact():
 	print("No implementation for this method")
 	emit_signal("finished")
+
+func get_class():
+	return "MapAction"

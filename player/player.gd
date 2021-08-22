@@ -12,6 +12,8 @@ onready var sprite = $Sprite
 
 onready var collider = $CollisionShape2D
 
+onready var area2D = $Position2D/Area2D
+
 signal collided(collided)
 
 signal battle
@@ -32,7 +34,9 @@ var character: Character = preload("res://domain/character.gd").new()
 func _ready():
 	position.x = initial_position_x
 	position.y = initial_position_y
-
+	
+	area2D.connect("body_entered", self, "_on_body_enter")
+	area2D.connect("body_exited", self, "_on_body_exited")
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -50,14 +54,13 @@ func _physics_process(delta):
 		attention_icon.hide()
 		
 	if mapAction != null && actionPress:
+		print_debug("Map action: ", mapAction)
 		mapAction.interact()
 	elif input_vector != Vector2.ZERO:
 		if input_vector.x > 0:
 			animationPlayer.play("RunRight")
-			sprite.flip_h = false
 		elif input_vector.x < 0:
-			sprite.flip_h = true
-			animationPlayer.play("RunRight")
+			animationPlayer.play("RunLeft")
 		elif input_vector.y > 0:
 			animationPlayer.play("Teste")
 		elif input_vector.y < 0:
@@ -77,8 +80,14 @@ func _physics_process(delta):
 	
 	if kinematidCollision != null:
 		emit_signal("collided", kinematidCollision.collider)
-			
-func interable(mapAction):
-	self.mapAction = mapAction
 
+func _on_body_enter(body):
+	for action in get_tree().get_nodes_in_group("map_actions"):
+		if action == body.get_parent():
+			mapAction = body.get_parent()
+
+func _on_body_exited(body):
+	for action in get_tree().get_nodes_in_group("map_actions"):
+		if action == body.get_parent():
+			mapAction = null
 

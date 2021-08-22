@@ -7,6 +7,8 @@ onready var lb_enemy = $HBoxContainer/enemyName
 onready var btnAttack = $vboxActions/btnAtk
 onready var btnRun = $vboxActions/btnRun
 
+onready var textBox = $textbox
+
 var character: Character
 var enemy: Enemy
 
