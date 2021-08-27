@@ -21,6 +21,12 @@ func process_node(node: Node):
 		for action in node.get_children():
 			create_action(action)
 
+func _input(event):
+	if self.player.pause_input:
+		if event.is_action_pressed("ui_accept"):
+			textBox.nextText()
+		
+
 func create_action(action):
 	
 	var new_action = null

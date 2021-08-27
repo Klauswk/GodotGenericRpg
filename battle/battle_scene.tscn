@@ -11,7 +11,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vboxActions" type="VBoxContainer" parent="."]
+[node name="player_gui" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vboxActions" type="VBoxContainer" parent="player_gui"]
 margin_top = 63.0
 margin_right = 124.0
 margin_bottom = 110.0
@@ -20,18 +27,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btnAtk" type="Button" parent="vboxActions"]
+[node name="btnAtk" type="Button" parent="player_gui/vboxActions"]
 margin_right = 124.0
 margin_bottom = 20.0
 text = "Attack"
 
-[node name="btnRun" type="Button" parent="vboxActions"]
+[node name="btnRun" type="Button" parent="player_gui/vboxActions"]
 margin_top = 24.0
 margin_right = 124.0
 margin_bottom = 44.0
 text = "Run"
 
-[node name="vboxInfo" type="VBoxContainer" parent="."]
+[node name="vboxInfo" type="VBoxContainer" parent="player_gui"]
 margin_left = 154.058
 margin_top = 62.4388
 margin_right = 278.058
@@ -42,36 +49,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hpContainer" type="HBoxContainer" parent="vboxInfo"]
+[node name="hpContainer" type="HBoxContainer" parent="player_gui/vboxInfo"]
 margin_right = 124.0
 margin_bottom = 14.0
 alignment = 2
 
-[node name="lbHp" type="Label" parent="vboxInfo/hpContainer"]
+[node name="lbHp" type="Label" parent="player_gui/vboxInfo/hpContainer"]
 margin_left = 61.0
 margin_right = 83.0
 margin_bottom = 14.0
 text = "HP:"
 
-[node name="lbCurrentHp" type="Label" parent="vboxInfo/hpContainer"]
+[node name="lbCurrentHp" type="Label" parent="player_gui/vboxInfo/hpContainer"]
 margin_left = 87.0
 margin_right = 124.0
 margin_bottom = 14.0
 text = "20/20"
 
-[node name="mpContainer" type="HBoxContainer" parent="vboxInfo"]
+[node name="mpContainer" type="HBoxContainer" parent="player_gui/vboxInfo"]
 margin_top = 18.0
 margin_right = 124.0
 margin_bottom = 32.0
 alignment = 2
 
-[node name="lbMp" type="Label" parent="vboxInfo/mpContainer"]
+[node name="lbMp" type="Label" parent="player_gui/vboxInfo/mpContainer"]
 margin_left = 59.0
 margin_right = 83.0
 margin_bottom = 14.0
 text = "MP:"
 
-[node name="lbCurrentMp" type="Label" parent="vboxInfo/mpContainer"]
+[node name="lbCurrentMp" type="Label" parent="player_gui/vboxInfo/mpContainer"]
 margin_left = 87.0
 margin_right = 124.0
 margin_bottom = 14.0
@@ -114,3 +121,5 @@ text = "20/20"
 [node name="textbox" parent="." instance=ExtResource( 2 )]
 offset = Vector2( 0, 70 )
 transform = Transform2D( 1, 0, 0, 1, 0, 70 )
+
+[connection signal="finished" from="textbox" to="." method="_on_textbox_finished"]

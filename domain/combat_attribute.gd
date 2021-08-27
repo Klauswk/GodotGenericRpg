@@ -11,9 +11,5 @@ export (int) var intelligence = 2
 export (int) var speed = 20
 export (int) var current_hp = max_hp
 
-signal defeated
-
 func take_damage(amount: int):
 	current_hp -= amount
-	if current_hp <= 0:
-		emit_signal("defeated")

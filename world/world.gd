@@ -33,8 +33,6 @@ func _on_player_battle():
 	remove_child(player)
 	add_child(battle_scene)
 	
-	player.character.connect("defeated", self, "_on_player_defeated")
-	enemy.connect("defeated", self, "_on_enemy_defeated")
 	battle_scene.connect("battle_end", self, "_on_battle_end")
 	battle_scene.connect("escape", self, "_on_escape")
 
