@@ -13,3 +13,6 @@ export (int) var current_hp = max_hp
 
 func take_damage(amount: int):
 	current_hp -= amount
+	
+	if current_hp < 0:
+		current_hp = 0
