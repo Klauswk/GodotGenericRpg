@@ -1,0 +1,161 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://menu/status_menu/status_menu.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="menuStatus" type="MarginContainer" parent="."]
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="menuStatus"]
+margin_right = 200.0
+margin_bottom = 52.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="menuStatus"]
+margin_right = 200.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menuStatus/MarginContainer"]
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 198.0
+margin_bottom = 52.0
+
+[node name="firstRowContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer"]
+margin_right = 195.0
+margin_bottom = 14.0
+
+[node name="levelContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer"]
+margin_right = 58.0
+margin_bottom = 14.0
+
+[node name="lbLevel" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/levelContainer"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "Level:"
+
+[node name="lbPlayerLevel" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/levelContainer"]
+margin_left = 42.0
+margin_right = 58.0
+margin_bottom = 14.0
+text = "99"
+
+[node name="xpContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer"]
+margin_left = 62.0
+margin_right = 195.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="lbXp" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/xpContainer"]
+margin_left = 43.0
+margin_right = 69.0
+margin_bottom = 14.0
+text = "Exp:"
+
+[node name="lbPlayerXp" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/xpContainer"]
+margin_left = 73.0
+margin_right = 133.0
+margin_bottom = 14.0
+text = "900:1800"
+
+[node name="secondRowContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 195.0
+margin_bottom = 32.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/secondRowContainer"]
+margin_right = 63.0
+margin_bottom = 14.0
+
+[node name="lbHp" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/secondRowContainer/HBoxContainer2"]
+margin_right = 22.0
+margin_bottom = 14.0
+text = "HP:"
+
+[node name="lbPlayerHp" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/secondRowContainer/HBoxContainer2"]
+margin_left = 26.0
+margin_right = 63.0
+margin_bottom = 14.0
+text = "20/20"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/secondRowContainer"]
+margin_left = 67.0
+margin_right = 195.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="lbSpeed" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/secondRowContainer/HBoxContainer3"]
+margin_left = 44.0
+margin_right = 87.0
+margin_bottom = 14.0
+text = "Speed:"
+
+[node name="lbPlayerSpd" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/secondRowContainer/HBoxContainer3"]
+margin_left = 91.0
+margin_right = 128.0
+margin_bottom = 14.0
+text = "20/20"
+
+[node name="thirdRowContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 195.0
+margin_bottom = 50.0
+
+[node name="atkContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/thirdRowContainer"]
+margin_right = 60.0
+margin_bottom = 14.0
+
+[node name="lbAtk" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/thirdRowContainer/atkContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Attack"
+
+[node name="lbPlayerAtk" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/thirdRowContainer/atkContainer"]
+margin_left = 44.0
+margin_right = 60.0
+margin_bottom = 14.0
+text = "10"
+
+[node name="defenseContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/thirdRowContainer"]
+margin_left = 64.0
+margin_right = 195.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="lbDef" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/thirdRowContainer/defenseContainer"]
+margin_left = 33.0
+margin_right = 90.0
+margin_bottom = 14.0
+text = "Defense:"
+
+[node name="lbPlayerDef" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/thirdRowContainer/defenseContainer"]
+margin_left = 94.0
+margin_right = 131.0
+margin_bottom = 14.0
+text = "20/20"

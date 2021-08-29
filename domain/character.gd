@@ -2,25 +2,26 @@ extends CombatAttribute
 
 class_name Character
 
-var experience = 0
 var experience_total = 0
-var experience_required = get_required_experience(level + 1)
+var experience_required = get_required_experience(level)
 
 signal level_up(character)
 
 func get_required_experience(level: int):
-	return round(pow(level, 1.8) + level * 4)
+	return round(pow(level + 1, 1.8) + level * 4)
 	
-func increase_experience(amount: int):
+func increase_experience(amount: int) -> bool:
+	var hasLevel = false
 	experience_total += amount
-	experience += amount
-	while experience >= experience_required:
+	while experience_total >= experience_required:
+		hasLevel = true;
 		level_up()
-		experience =- experience_required
-		
+	
+	return hasLevel
+	
 func level_up():
-	level =+ 1
-	experience_required = get_required_experience(level + 1)
+	level += 1
+	experience_required = get_required_experience(level)
 	
 	max_hp += 50
 	strength += randi() % 3

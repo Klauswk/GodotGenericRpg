@@ -30,7 +30,7 @@ func _ready():
 	btnRun.connect("pressed", self, "_on_btn_run")
 	
 func _input(event):
-	if event.is_action_pressed("ui_accept") && !ctrlPlayerGui.visible:
+	if (event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_cancel")) && !ctrlPlayerGui.visible:
 		textBox.nextText()
 
 func initialize(_character: Character, _enemy: Enemy):
@@ -45,7 +45,12 @@ func _on_player_defeated():
 func _on_enemy_defeated():
 	show_text(str("Gain exp of ", enemy.experience))
 	yield(textBox, "finished")
-	character.increase_experience(enemy.experience)
+	var has_level = character.increase_experience(enemy.experience)
+	
+	if has_level:
+		show_text(str("Reach a new level, you are now level ", character.level))
+		yield(textBox, "finished")
+		
 	emit_signal("battle_end")
 
 func _on_btn_run():

@@ -13,6 +13,19 @@ func initialize(_player: Player):
 func load_map_info():
 	player.hasBattle = has_meta("battle")
 	
+	var tilemap = get_node("Map");
+	
+	if tilemap != null:
+		var map_limits = tilemap.get_used_rect()
+		var map_cellsize = tilemap.cell_size
+		
+		for camera in get_tree().get_nodes_in_group("camera"):
+			if camera is Camera2D:
+				camera.limit_left = map_limits.position.x * map_cellsize.x
+				camera.limit_right = map_limits.end.x * map_cellsize.x
+				camera.limit_top = map_limits.position.y * map_cellsize.y
+				camera.limit_bottom = map_limits.end.y * map_cellsize.y
+	
 	for object in get_children():
 		process_node(object)
 
@@ -20,12 +33,6 @@ func process_node(node: Node):
 	if "actions" in node.name:
 		for action in node.get_children():
 			create_action(action)
-
-func _input(event):
-	if self.player.pause_input:
-		if event.is_action_pressed("ui_accept"):
-			textBox.nextText()
-		
 
 func create_action(action):
 	

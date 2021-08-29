@@ -141,7 +141,9 @@ anims/RunRight = SubResource( 3 )
 anims/RunUp = SubResource( 4 )
 anims/Teste = SubResource( 5 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=[
+"camera",
+]]
 position = Vector2( -7.62939e-06, 0 )
 current = true
 
