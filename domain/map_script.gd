@@ -60,6 +60,7 @@ func create_action(action):
 		
 	elif "npc" in action.name:
 		new_action = preload("res://save_robot/save_robot.tscn").instance()
+		new_action.initialize(name, player)
 		new_action.position.x = action.position.x + 8
 		new_action.position.y = action.position.y + 8
 		new_action.connect("text_show", self,"_on_text_show")

@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://main_title/main_title.gd" type="Script" id=2]
 
 [node name="TitleScreen" type="Control"]
@@ -11,42 +10,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 8.0
-margin_top = 5.0
-margin_right = 273.0
-margin_bottom = 104.0
+margin_top = 8.0
+margin_right = 279.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="Menu"]
-margin_right = 265.0
-margin_bottom = 64.0
-texture = ExtResource( 1 )
-stretch_mode = 4
+[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 271.0
+margin_bottom = 100.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CenterRow" type="HBoxContainer" parent="Menu"]
-margin_top = 68.0
-margin_right = 265.0
-margin_bottom = 112.0
+[node name="Label" type="Label" parent="MarginContainer/Menu"]
+margin_right = 271.0
+margin_bottom = 14.0
+text = "DW2023"
+align = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="MarginContainer/Menu"]
+margin_top = 18.0
+margin_right = 271.0
+margin_bottom = 100.0
 size_flags_vertical = 3
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_right = 265.0
-margin_bottom = 44.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Menu/CenterRow"]
+margin_right = 271.0
+margin_bottom = 82.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="btnNewGame" type="Button" parent="Menu/CenterRow/VBoxContainer"]
-margin_right = 265.0
-margin_bottom = 20.0
+[node name="btnNewGame" type="Button" parent="MarginContainer/Menu/CenterRow/VBoxContainer"]
+margin_top = 19.0
+margin_right = 271.0
+margin_bottom = 39.0
 text = "New Game"
 flat = true
 
-[node name="btnLoad" type="Button" parent="Menu/CenterRow/VBoxContainer"]
-margin_top = 24.0
-margin_right = 265.0
-margin_bottom = 44.0
+[node name="btnLoad" type="Button" parent="MarginContainer/Menu/CenterRow/VBoxContainer"]
+margin_top = 43.0
+margin_right = 271.0
+margin_bottom = 63.0
 text = "Load Game"
 flat = true

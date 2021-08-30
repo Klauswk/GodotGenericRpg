@@ -14,18 +14,21 @@ var scene
 
 var on_battle = false
 
-func _ready():
-	scene = preload("res://maps/park-central.tmx").instance()
-	scene.set_script(load("res://domain/map_script.gd"))
-	scene.player = player
-	scene.textBox = textbox
-	
-	add_child(scene)
+func _ready():	
 	player.connect("collided", self, "_on_collision")
 	gameMenu.connect("open", self, "_on_menu_open")
 	gameMenu.connect("close", self, "_on_menu_close")
 	gameMenu.connect("open_status", self, "_on_status_open")
 	gameMenu.connect("open_item", self, "_on_item_open")
+	
+func set_map_scene(scene: Node):
+	scene.set_script(load("res://domain/map_script.gd"))
+	scene.player = player
+	scene.textBox = textbox
+	
+	self.scene = scene
+	
+	add_child(scene)
 	
 
 func _input(event):
