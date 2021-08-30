@@ -11,10 +11,12 @@ signal open
 signal close
 
 signal open_status
+signal open_item
 
 func _ready():
 	vboxMenu.hide()
 	
+	btnItems.connect("pressed", self, "_on_btn_items")
 	btnStatus.connect("pressed", self, "_on_btn_status")
 	btnExit.connect("pressed", self, "_on_btn_exit")
 	
@@ -28,6 +30,9 @@ func hide_menu():
 
 func visible() -> bool:
 	return vboxMenu.visible
+
+func _on_btn_items():
+	emit_signal("open_item")
 
 func _on_btn_status():
 	emit_signal("open_status")

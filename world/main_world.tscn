@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://world/world.gd" type="Script" id=1]
 [ext_resource path="res://textbox/textbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/status_menu/status_menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menu/item_menu/item_menu.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D" groups=[
 "game",
@@ -26,5 +27,7 @@ offset = Vector2( 220, 10 )
 transform = Transform2D( 1, 0, 0, 1, 220, 10 )
 
 [node name="status_menu" parent="." instance=ExtResource( 5 )]
+
+[node name="item_menu" parent="." instance=ExtResource( 6 )]
 
 [connection signal="battle" from="player" to="." method="_on_player_battle"]

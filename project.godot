@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://domain/enemy.gd"
 }, {
+"base": "Node",
+"class": "GameItem",
+"language": "GDScript",
+"path": "res://domain/game_item.gd"
+}, {
 "base": "CanvasLayer",
 "class": "GameMenu",
 "language": "GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "GotoAction",
 "language": "GDScript",
 "path": "res://actions/go_to_action.gd"
+}, {
+"base": "CanvasLayer",
+"class": "ItemMenu",
+"language": "GDScript",
+"path": "res://menu/item_menu/item_menu.gd"
 }, {
 "base": "Node",
 "class": "MapAction",
@@ -63,19 +73,27 @@ _global_script_classes=[ {
 "class": "SaveNpc",
 "language": "GDScript",
 "path": "res://save_robot/save_robot.gd"
+}, {
+"base": "CanvasLayer",
+"class": "StatusMenu",
+"language": "GDScript",
+"path": "res://menu/status_menu/status_menu.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "Chest": "",
 "CombatAttribute": "",
 "Enemy": "",
+"GameItem": "",
 "GameMenu": "",
 "GameTextBox": "",
 "GotoAction": "",
+"ItemMenu": "",
 "MapAction": "",
 "OpenChestAction": "",
 "Player": "",
-"SaveNpc": ""
+"SaveNpc": "",
+"StatusMenu": ""
 }
 
 [application]

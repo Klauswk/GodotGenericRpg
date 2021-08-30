@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name StatusMenu
+
 onready var teste = $menuStatus/MarginContainer/VBoxContainer/firstRowContainer
 
 onready var lbPlayerLvl = $menuStatus/MarginContainer/VBoxContainer/firstRowContainer/levelContainer/lbPlayerLevel
@@ -9,7 +11,6 @@ onready var lbPlayerAtk = $menuStatus/MarginContainer/VBoxContainer/thirdRowCont
 onready var lbPlayerDef = $menuStatus/MarginContainer/VBoxContainer/thirdRowContainer/defenseContainer/lbPlayerDef
 onready var lbPlayerSpd = $menuStatus/MarginContainer/VBoxContainer/secondRowContainer/HBoxContainer3/lbPlayerSpd
 onready var menuStatus = $menuStatus
-
 
 func _ready():
 	menuStatus.hide()
