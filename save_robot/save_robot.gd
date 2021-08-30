@@ -17,6 +17,11 @@ func save_game():
 	var save_game = File.new()
 	save_game.open("user://DW2023.save", File.WRITE)
 	
+	var item_list = []
+	
+	for item in player.character.items:
+		item_list.append({"item_id": item.id, "quantity": item.quantity})
+	
 	var save_dict = {
 		"location": location,
 		"position_x": player.position.x,
@@ -28,7 +33,9 @@ func save_game():
 		"intelligence": player.character.intelligence,
 		"speed" :player.character.speed,
 		"current_hp": player.character.current_hp,
-		"experience_total": player.character.experience_total
+		"experience_total": player.character.experience_total,
+		"items": item_list,
+		"open_chests": player.character.open_chests
 	}
 	
 	save_game.store_line(to_json(save_dict))

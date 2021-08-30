@@ -35,7 +35,6 @@ func _on_btn_load():
 		
 		var main_world = preload("res://world/main_world.tscn").instance()
 		
-		
 		get_tree().get_root().add_child(main_world)
 		var player = main_world.player
 		player.position.x = game_data.position_x
@@ -49,6 +48,24 @@ func _on_btn_load():
 		player.character.current_hp = game_data.current_hp
 		player.character.experience_total = game_data.experience_total
 		player.character.experience_required = player.character.get_required_experience(player.character.level)
+		player.character.open_chests = game_data.open_chests
+		
+		var item_list = []
+		
+		for obj in game_data.items:
+			var item = GameItem.findById(obj.item_id)
+			item.quantity = obj.quantity
+			item_list.append(item)
+		
+		player.character.items = item_list
+		
+		var open_chests = []
+		
+		for id in game_data.open_chests:
+			open_chests.append(int(id))
+		
+		player.character.open_chests = open_chests
+		
 		main_world.set_map_scene(load(str("res://maps/",game_data.location,".tmx")).instance())
 		
 		get_tree().get_root().remove_child(self)
