@@ -15,3 +15,22 @@ fixed_column_width = 64
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PopupMenu" type="PopupPanel" parent="."]
+margin_left = 192.0
+margin_top = 40.0
+margin_right = 280.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="optionList" type="ItemList" parent="PopupMenu"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 60.0
+items = [ "Item 0", null, false, "Item 1", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}

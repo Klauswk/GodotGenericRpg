@@ -3,6 +3,7 @@ extends CombatAttribute
 class_name Enemy
 
 var experience = 0
+var bits = 0
 
 
 static func get_enemy(map_name: String) -> Enemy:
@@ -40,5 +41,6 @@ static func get_enemy(map_name: String) -> Enemy:
 	enemy.speed = enemy_to_fight.get("speed")
 	enemy.intelligence = enemy_to_fight.get("intelligence")
 	enemy.experience = enemy_to_fight.get("experience")
+	enemy.bits = enemy_to_fight.get("bits")
 	
 	return enemy

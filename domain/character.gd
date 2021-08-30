@@ -4,6 +4,7 @@ class_name Character
 
 var experience_total = 0
 var experience_required = get_required_experience(level)
+var bits = 0
 
 var items = []
 
@@ -22,7 +23,10 @@ func increase_experience(amount: int) -> bool:
 		level_up()
 	
 	return hasLevel
-	
+
+func increase_bits(amount: int):
+	bits += amount
+
 func level_up():
 	level += 1
 	experience_required = get_required_experience(level)

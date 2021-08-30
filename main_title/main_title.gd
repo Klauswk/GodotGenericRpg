@@ -46,6 +46,7 @@ func _on_btn_load():
 		player.character.intelligence = game_data.intelligence
 		player.character.speed = game_data.speed
 		player.character.current_hp = game_data.current_hp
+		player.character.bits = game_data.bits
 		player.character.experience_total = game_data.experience_total
 		player.character.experience_required = player.character.get_required_experience(player.character.level)
 		player.character.open_chests = game_data.open_chests

@@ -8,7 +8,8 @@
             "defense": 5,
             "intelligence": 2,
             "speed": 2,
-            "experience": 10
+            "experience": 10,
+            "bits": 15
         },
         {
             "combat_name": "Cow",
@@ -18,7 +19,8 @@
             "defense": 6,
             "intelligence": 1,
             "speed": 3,
-            "experience": 20
+            "experience": 20,
+            "bits": 5
         }
     ]
 }

@@ -43,9 +43,10 @@ func _on_player_defeated():
 	emit_signal("battle_end")
 
 func _on_enemy_defeated():
-	show_text(str("Gain exp of ", enemy.experience))
+	show_text(str("Gain exp of ", enemy.experience, " and ", enemy.bits, " bits!"))
 	yield(textBox, "finished")
 	var has_level = character.increase_experience(enemy.experience)
+	character.increase_bits(enemy.bits)
 	
 	if has_level:
 		show_text(str("Reach a new level, you are now level ", character.level))

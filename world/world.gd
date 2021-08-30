@@ -35,7 +35,7 @@ func _input(event):
 	if self.player.pause_input:
 		if event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_cancel"):
 			textbox.nextText()
-	if (!gameMenu.visible()) && event.is_action_pressed("ui_select") && (!on_battle) && (!statusMenu.visible()):
+	if (!gameMenu.visible()) && event.is_action_pressed("ui_select") && (!on_battle) && (!statusMenu.visible()) && (!itemMenu.visible()):
 		_on_menu_open()
 		gameMenu.show_menu()
 	elif gameMenu.visible() && (event.is_action_pressed("ui_cancel") || event.is_action_pressed("ui_select")) && (!on_battle):

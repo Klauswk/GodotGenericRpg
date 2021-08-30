@@ -34,6 +34,7 @@ func save_game():
 		"speed" :player.character.speed,
 		"current_hp": player.character.current_hp,
 		"experience_total": player.character.experience_total,
+		"bits": player.character.bits,
 		"items": item_list,
 		"open_chests": player.character.open_chests
 	}
