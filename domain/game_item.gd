@@ -2,22 +2,27 @@ extends Resource
 
 class_name GameItem
 
-enum ITEM_TYPE {USABLE_ANYWHERE, USABLE_BATTLE, SPECIAL}
+enum USABLE_TYPE {USABLE_ANYWHERE, USABLE_BATTLE, SPECIAL}
+enum EFFECT_TYPE {HEALING}
 
 signal use(item)
 
 var item_name: String
 var id: int
-var type = ITEM_TYPE.USABLE_ANYWHERE
+var usable_type
+var effect_type
+var effect
 var quantity: int = 1
-var value: int = 5
+var value: int
 
-static func findById(item_id: int) -> GameItem:
-	match item_id:
+static func get_usable_type(id: int):
+	match id:
 		1:
-			return load("res://domain/item/small_potion.gd").new()
+			return USABLE_TYPE.USABLE_ANYWHERE
+		2:
+			return USABLE_TYPE.USABLE_BATTLE
 		_:
-			return null
+			return USABLE_TYPE.SPECIAL
 
 func use(combatAttribute: Entity):
 	print_debug("No implementation for this")

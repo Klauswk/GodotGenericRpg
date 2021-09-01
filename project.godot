@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actions/go_to_action.gd"
 }, {
+"base": "GameItem",
+"class": "HealingItem",
+"language": "GDScript",
+"path": "res://domain/item/healing_item.gd"
+}, {
 "base": "CanvasLayer",
 "class": "ItemMenu",
 "language": "GDScript",
@@ -79,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://shop/shop_npc.gd"
 }, {
-"base": "GameItem",
-"class": "SmallPotion",
-"language": "GDScript",
-"path": "res://domain/item/small_potion.gd"
-}, {
 "base": "CanvasLayer",
 "class": "StatusMenu",
 "language": "GDScript",
@@ -98,13 +98,13 @@ _global_script_class_icons={
 "GameMenu": "",
 "GameTextBox": "",
 "GotoAction": "",
+"HealingItem": "",
 "ItemMenu": "",
 "MapAction": "",
 "OpenChestAction": "",
 "Player": "",
 "SaveNpc": "",
 "ShopNpc": "",
-"SmallPotion": "",
 "StatusMenu": ""
 }
 
@@ -116,7 +116,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-EnemyService="*res://domain/EnemyService.gd"
+EnemyService="*res://domain/enemy_service.gd"
+ItemService="*res://domain/item_service.gd"
 
 [display]
 

@@ -1,13 +1,9 @@
 extends GameItem
 
-class_name SmallPotion
-
-var effect = 50
+class_name HealingItem
 
 func _init():
-	self.item_name = "Small Potion"
-	self.id = 1
-	self.value = 50
+	effect_type = EFFECT_TYPE.HEALING
 
 func use(combatAttribute: Entity):
 	if combatAttribute.max_hp == combatAttribute.current_hp:

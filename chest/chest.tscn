@@ -7,13 +7,10 @@
 extents = Vector2( 8, 8 )
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 8, 8 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 8, 8 )
 mode = 1
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]

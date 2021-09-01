@@ -3,8 +3,8 @@
         "name": "Small Potion",
         "id": 1,
         "value": 50,
-        "usable_type": "1",
-        "type": "1",
+        "usable_type": 1,
+        "type": 1,
         "effect": "50"
     }
 ] 

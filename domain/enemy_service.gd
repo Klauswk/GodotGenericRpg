@@ -2,6 +2,8 @@ extends Node
 
 var enemies = {}
 
+var Enemy = preload("res://domain/enemy.gd")
+
 func _ready():
 	var dir = Directory.new()
 	if dir.open("res/maps/") == OK:
@@ -36,7 +38,7 @@ func load_file_content(file_name: String, path: String):
 	var enemies_to_fight: Array = []
 		
 	for enemy_to_fight in load_enemies:
-		var enemy: Enemy = load("res://domain/enemy.gd").new()
+		var enemy: Enemy = Enemy.new()
 		enemy.combat_name = enemy_to_fight.get("combat_name")
 		enemy.max_hp = enemy_to_fight.get("max_hp")
 		enemy.current_hp = enemy_to_fight.get("max_hp")

@@ -108,7 +108,7 @@ func _on_text_show(text: String):
 
 func _on_item_acquired(id, item_id, _quantity):
 	player.character.add_chest_open(id)
-	var item = GameItem.findById(item_id)
+	var item = ItemService.find_by_id(item_id)
 	item.quantity = _quantity
 	player.character.add_item(item)
 
