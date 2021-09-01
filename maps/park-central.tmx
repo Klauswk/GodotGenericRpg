@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="7">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="9">
  <properties>
   <property name="battle" type="bool" value="true"/>
  </properties>
@@ -34,25 +34,26 @@
 </data>
  </layer>
  <objectgroup id="4" name="actions">
-  <object id="2" name="Chest_1" type="chest" x="8" y="56" width="16" height="16">
+  <object id="2" name="Chest_1" type="chest" x="8" y="64" width="16" height="16">
    <properties>
     <property name="id" type="int" value="1"/>
     <property name="item_id" value="1"/>
     <property name="quantity" type="int" value="1"/>
    </properties>
   </object>
-  <object id="4" name="go_to_beach" x="104.375" y="184.5" width="23.25" height="7.5">
+  <object id="4" name="go_to_beach" x="104" y="184" width="24" height="7.5">
    <properties>
     <property name="position_x" value="130"/>
     <property name="position_y" value="32"/>
    </properties>
   </object>
-  <object id="5" name="go_to_wire-forest-entrance" x="247.875" y="86.75" width="18.5" height="17.25">
+  <object id="5" name="go_to_wire-forest-entrance" x="240" y="96" width="16" height="16">
    <properties>
     <property name="position_x" value="56"/>
     <property name="position_y" value="36"/>
    </properties>
   </object>
   <object id="6" name="npc_save" x="176" y="32" width="16" height="16"/>
+  <object id="7" name="npc_shop" x="168" y="128" width="16" height="16"/>
  </objectgroup>
 </map>

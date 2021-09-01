@@ -120,10 +120,10 @@ func attack():
 	else:
 		btnAttack.grab_focus()
 		
-func calculate_damage(attacker: CombatAttribute, defender: CombatAttribute) -> int:
+func calculate_damage(attacker: Entity, defender: Entity) -> int:
 	return int(max(0, attacker.strength - defender.defense))
 
-func chance_to_miss(attacker: CombatAttribute, defender: CombatAttribute) -> bool:
+func chance_to_miss(attacker: Entity, defender: Entity) -> bool:
 	var miss = ((randi() % 5) + max(0, attacker.speed - defender.speed)) < 5
 
 	if miss:

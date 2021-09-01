@@ -5,6 +5,7 @@ onready var textbox: GameTextBox = $textbox
 onready var gameMenu: GameMenu = $menu
 onready var statusMenu = $status_menu
 onready var itemMenu = $item_menu
+onready var shopMenu = $shop_menu
 
 var Scene_Transition = preload("res://maps/scene_transition.tscn")
 
@@ -20,6 +21,7 @@ func _ready():
 	gameMenu.connect("close", self, "_on_menu_close")
 	gameMenu.connect("open_status", self, "_on_status_open")
 	gameMenu.connect("open_item", self, "_on_item_open")
+	shopMenu.connect("shop_close", self, "_on_shop_close")
 	
 func set_map_scene(scene: Node):
 	scene.set_script(load("res://domain/map_script.gd"))
@@ -28,14 +30,15 @@ func set_map_scene(scene: Node):
 	
 	self.scene = scene
 	
-	add_child(scene)
+	scene.connect("open_shop", self, "_on_shop_open")
 	
+	add_child(scene)
 
 func _input(event):
 	if self.player.pause_input:
 		if event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_cancel"):
 			textbox.nextText()
-	if (!gameMenu.visible()) && event.is_action_pressed("ui_select") && (!on_battle) && (!statusMenu.visible()) && (!itemMenu.visible()):
+	if (!gameMenu.visible()) && event.is_action_pressed("ui_select") && (!on_battle) && (!statusMenu.visible()) && (!itemMenu.visible()) && (!shopMenu.visible()) :
 		_on_menu_open()
 		gameMenu.show_menu()
 	elif gameMenu.visible() && (event.is_action_pressed("ui_cancel") || event.is_action_pressed("ui_select")) && (!on_battle):
@@ -47,6 +50,14 @@ func _input(event):
 	elif itemMenu.visible() && (event.is_action_pressed("ui_cancel") || event.is_action_pressed("ui_select")) && (!on_battle):
 		itemMenu.hide_menu()
 		gameMenu.show_menu()
+
+func _on_shop_open():
+	shopMenu.show_menu()
+	_on_menu_open()
+
+func _on_shop_close():
+	shopMenu.hide_menu()
+	_on_menu_close()
 
 func _on_menu_open():
 	self.player.pause_input = true
@@ -85,7 +96,7 @@ func _on_player_battle():
 	
 	var current_map = get_tree().get_nodes_in_group("map").front()
 	
-	var enemy: Enemy = Enemy.get_enemy(current_map.name)
+	var enemy: Enemy = EnemyService.get_enemy(current_map.name)
 	battle_scene.initialize(player.character, enemy)
 	
 	remove_child(scene)

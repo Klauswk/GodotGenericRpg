@@ -63,37 +63,22 @@ margin_right = 58.0
 margin_bottom = 14.0
 text = "99"
 
-[node name="bitsContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer"]
-margin_left = 62.0
-margin_right = 110.0
-margin_bottom = 14.0
-
-[node name="lbBits" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/bitsContainer"]
-margin_right = 28.0
-margin_bottom = 14.0
-text = "bits:"
-
-[node name="lbPlayerBits" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/bitsContainer"]
-margin_left = 32.0
-margin_right = 48.0
-margin_bottom = 14.0
-text = "99"
-
 [node name="xpContainer" type="HBoxContainer" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer"]
-margin_left = 114.0
+margin_left = 62.0
 margin_right = 204.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="lbXp" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/xpContainer"]
-margin_right = 26.0
+margin_left = 52.0
+margin_right = 78.0
 margin_bottom = 14.0
 text = "Exp:"
 
 [node name="lbPlayerXp" type="Label" parent="menuStatus/MarginContainer/VBoxContainer/firstRowContainer/xpContainer"]
-margin_left = 30.0
-margin_right = 90.0
+margin_left = 82.0
+margin_right = 142.0
 margin_bottom = 14.0
 text = "900:1800"
 

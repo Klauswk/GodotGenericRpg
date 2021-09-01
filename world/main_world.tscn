@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://world/world.gd" type="Script" id=1]
 [ext_resource path="res://textbox/textbox.tscn" type="PackedScene" id=2]
@@ -6,11 +6,15 @@
 [ext_resource path="res://menu/menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/status_menu/status_menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menu/item_menu/item_menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://shop/shop_scene.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node2D" groups=[
 "game",
 ]]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 112, 56 )
@@ -29,5 +33,7 @@ transform = Transform2D( 1, 0, 0, 1, 220, 10 )
 [node name="status_menu" parent="." instance=ExtResource( 5 )]
 
 [node name="item_menu" parent="." instance=ExtResource( 6 )]
+
+[node name="shop_menu" parent="." instance=ExtResource( 7 )]
 
 [connection signal="battle" from="player" to="." method="_on_player_battle"]

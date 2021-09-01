@@ -9,6 +9,7 @@ extents = Vector2( 7.32872, 7.18589 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "RunLeft"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -19,7 +20,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 6, 7 ]
+"values": [ 7, 6 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D:rotation_degrees")
@@ -46,7 +47,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 4, 5 ]
+"values": [ 5, 4 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D:rotation_degrees")
@@ -73,7 +74,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 2, 3 ]
+"values": [ 3, 2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D:rotation_degrees")
@@ -100,7 +101,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 1, 0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D:rotation_degrees")
@@ -129,7 +130,6 @@ __meta__ = {
 position = Vector2( -7.62939e-06, 0 )
 texture = ExtResource( 2 )
 hframes = 8
-frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -7.62939e-06, 0 )
@@ -153,7 +153,6 @@ position = Vector2( 0, -16 )
 texture = ExtResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="."]
-rotation = 4.71239
 __meta__ = {
 "_gizmo_extents_": 22.6
 }

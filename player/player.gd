@@ -37,6 +37,7 @@ func _ready():
 	
 	area2D.connect("body_entered", self, "_on_body_enter")
 	area2D.connect("body_exited", self, "_on_body_exited")
+	add_to_group("player")
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO

@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "CombatAttribute",
+"base": "Entity",
 "class": "Character",
 "language": "GDScript",
 "path": "res://domain/character.gd"
@@ -19,17 +19,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://chest/chest.gd"
 }, {
-"base": "Node",
-"class": "CombatAttribute",
-"language": "GDScript",
-"path": "res://domain/combat_attribute.gd"
-}, {
-"base": "CombatAttribute",
+"base": "Entity",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://domain/enemy.gd"
 }, {
-"base": "Node",
+"base": "Resource",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://domain/entity.gd"
+}, {
+"base": "Resource",
 "class": "GameItem",
 "language": "GDScript",
 "path": "res://domain/game_item.gd"
@@ -74,6 +74,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://save_robot/save_robot.gd"
 }, {
+"base": "MapAction",
+"class": "ShopNpc",
+"language": "GDScript",
+"path": "res://shop/shop_npc.gd"
+}, {
+"base": "GameItem",
+"class": "SmallPotion",
+"language": "GDScript",
+"path": "res://domain/item/small_potion.gd"
+}, {
 "base": "CanvasLayer",
 "class": "StatusMenu",
 "language": "GDScript",
@@ -82,8 +92,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Character": "",
 "Chest": "",
-"CombatAttribute": "",
 "Enemy": "",
+"Entity": "",
 "GameItem": "",
 "GameMenu": "",
 "GameTextBox": "",
@@ -93,6 +103,8 @@ _global_script_class_icons={
 "OpenChestAction": "",
 "Player": "",
 "SaveNpc": "",
+"ShopNpc": "",
+"SmallPotion": "",
 "StatusMenu": ""
 }
 
@@ -101,6 +113,10 @@ _global_script_class_icons={
 config/name="DW2023"
 run/main_scene="res://main_title/main_title.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+EnemyService="*res://domain/EnemyService.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-extends CombatAttribute
+extends Entity
 
 class_name Character
 

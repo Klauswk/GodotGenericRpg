@@ -1,6 +1,6 @@
-extends Node
+extends Resource
 
-class_name CombatAttribute
+class_name Entity
 
 export (int) var level = 1
 export (String) var combat_name = ""

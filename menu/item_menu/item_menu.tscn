@@ -10,8 +10,9 @@ margin_right = 279.0
 margin_bottom = 109.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+items = [ "Small Potion x5", null, false ]
 max_columns = 3
-fixed_column_width = 64
+fixed_column_width = 100
 __meta__ = {
 "_edit_use_anchors_": false
 }

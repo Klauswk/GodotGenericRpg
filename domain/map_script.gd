@@ -3,6 +3,8 @@ extends Node
 var player: Player
 var textBox: GameTextBox
 
+signal open_shop
+
 func _ready():
 	add_to_group("map")
 	load_map_info()
@@ -38,12 +40,14 @@ func create_action(action):
 	
 	var new_action = null
 	
+	action.position.y -= 8
+	
 	if "Chest" in action.name:
 		
 		if !player.character.is_chest_open(int(action.get_meta("id"))):
 			new_action = preload("res://chest/chest.tscn").instance()
-			new_action.position.x = action.position.x + 8
-			new_action.position.y = action.position.y + 8
+			new_action.position.x = action.position.x
+			new_action.position.y = action.position.y
 			new_action.initialize(action.name, int(action.get_meta("id")), int(action.get_meta("item_id")), int(action.get_meta("quantity")))
 			new_action.connect("text_show", self,"_on_text_show")
 			new_action.connect("item_acquired", self,"_on_item_acquired")
@@ -59,16 +63,27 @@ func create_action(action):
 		add_new_action(new_action)
 		
 	elif "npc" in action.name:
-		new_action = preload("res://save_robot/save_robot.tscn").instance()
-		new_action.initialize(name, player)
-		new_action.position.x = action.position.x + 8
-		new_action.position.y = action.position.y + 8
-		new_action.connect("text_show", self,"_on_text_show")
-		new_action.name = action.name
-		add_new_action(new_action)
+		if "save" in action.name:
+			new_action = preload("res://save_robot/save_robot.tscn").instance()
+			new_action.initialize(name, player)
+			new_action.position.x = action.position.x
+			new_action.position.y = action.position.y
+			new_action.connect("text_show", self,"_on_text_show")
+			new_action.name = action.name
+			add_new_action(new_action)
+		elif "shop" in action.name:
+			new_action = preload("res://shop/shop_npc.tscn").instance()
+			new_action.position.x = action.position.x
+			new_action.position.y = action.position.y
+			new_action.name = action.name
+			new_action.connect("open_shop", self,"_on_open_shop")
+			add_new_action(new_action)
 
 func add_new_action(mapAction: MapAction):
 	add_child(mapAction)
+
+func _on_open_shop():
+	emit_signal("open_shop")
 
 func _on_player_change_map(next_map, position_x, position_y):
 	

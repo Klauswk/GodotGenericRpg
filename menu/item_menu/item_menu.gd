@@ -18,11 +18,21 @@ func _ready():
 func initialize(character: Character ):
 	self.character = character
 
+func on_option_select(index: int):
+	if "Sell" in optionList.get_item_text(index):
+		var selecteds = itemList.get_selected_items()
+		for select in selecteds:
+			var item: GameItem = character.items[select]
+			
+	elif "Exit" in optionList.get_item_text(index):
+		popupPanel.hide()
+		itemList.grab_focus()
+
 func on_item_select(index: int):
 	var item: GameItem = character.items[index]
 	
 	optionList.clear()
-	optionList.add_item("Use")
+	optionList.add_item("Sell")
 	optionList.add_item("Exit")
 	optionList.grab_focus()
 	optionList.select(0, true)
@@ -31,18 +41,25 @@ func on_item_select(index: int):
 	
 
 func show_menu():
+	load_item_list()
+	
+	itemList.show()
+
+func load_item_list():
 	itemList.clear()
 	for item in character.items:
 		itemList.add_item(str(item.item_name, " x", item.quantity))
 
+	focus_on_first()
+
+func focus_on_first():
 	if itemList.get_item_count() > 0:
 		itemList.grab_focus()
 		itemList.select(0, true)
-	
-	itemList.show()
 
 func hide_menu():
 	itemList.hide()
+	popupPanel.hide()
 
 func visible() -> bool:
 	return itemList.visible
