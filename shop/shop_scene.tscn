@@ -63,7 +63,6 @@ __meta__ = {
 }
 
 [node name="buy_sub_menu" type="PopupPanel" parent="shop_panel/shopList"]
-visible = true
 margin_left = 192.0
 margin_top = 40.0
 margin_right = 280.0
@@ -73,17 +72,11 @@ __meta__ = {
 }
 
 [node name="optionList" type="ItemList" parent="shop_panel/shopList/buy_sub_menu"]
-margin_right = 88.0
-margin_bottom = 64.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 60.0
 items = [ "Item 0", null, false, "Item 1", null, false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="buy_number" type="SpinBox" parent="shop_panel/shopList/buy_sub_menu/optionList"]
-margin_top = 40.0
-margin_right = 88.0
-margin_bottom = 64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,14 +110,6 @@ margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 60.0
 items = [ "Item 0", null, false, "Item 1", null, false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="sell_number" type="SpinBox" parent="shop_panel/playerList/sell_sub_menu/optionList"]
-margin_top = 40.0
-margin_right = 88.0
-margin_bottom = 64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

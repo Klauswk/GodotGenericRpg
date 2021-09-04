@@ -19,7 +19,7 @@ func initialize(character: Character ):
 	self.character = character
 
 func on_option_select(index: int):
-	if "Sell" in optionList.get_item_text(index):
+	if "Use" in optionList.get_item_text(index):
 		var selecteds = itemList.get_selected_items()
 		for select in selecteds:
 			var item: GameItem = character.items[select]
@@ -32,7 +32,7 @@ func on_item_select(index: int):
 	var item: GameItem = character.items[index]
 	
 	optionList.clear()
-	optionList.add_item("Sell")
+	optionList.add_item("Use")
 	optionList.add_item("Exit")
 	optionList.grab_focus()
 	optionList.select(0, true)

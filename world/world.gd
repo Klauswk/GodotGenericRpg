@@ -23,6 +23,9 @@ func _ready():
 	gameMenu.connect("open_item", self, "_on_item_open")
 	shopMenu.connect("shop_close", self, "_on_shop_close")
 	
+	shopMenu.initialize(player.character)
+	
+	
 func set_map_scene(scene: Node):
 	scene.set_script(load("res://domain/map_script.gd"))
 	scene.player = player

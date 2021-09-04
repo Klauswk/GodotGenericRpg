@@ -3,9 +3,9 @@ extends Resource
 class_name GameItem
 
 enum USABLE_TYPE {USABLE_ANYWHERE, USABLE_BATTLE, SPECIAL}
-enum EFFECT_TYPE {HEALING}
+enum EFFECT_TYPE {HEALING, DAMAGE}
 
-signal use(item)
+signal use(item, message)
 
 var item_name: String
 var id: int
@@ -24,5 +24,5 @@ static func get_usable_type(id: int):
 		_:
 			return USABLE_TYPE.SPECIAL
 
-func use(combatAttribute: Entity):
+func use(attacker: Entity, defender: Entity):
 	print_debug("No implementation for this")

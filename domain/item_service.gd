@@ -3,6 +3,7 @@ extends Node
 var items = []
 
 var HealingItemClass = load("res://domain/item/healing_item.gd")
+var CombatItemClass = load("res://domain/item/combat_item.gd")
 
 func _ready():
 	var dir = Directory.new()
@@ -43,7 +44,14 @@ func load_file_content(file_name: String, path: String):
 			healing_item.usable_type = GameItem.get_usable_type(item.usable_type)
 			healing_item.effect = item.effect
 			items.append(healing_item)
-			
+		if item.type == 2:
+			var combat_item = CombatItemClass.new()
+			combat_item.item_name = item.name
+			combat_item.id = item.id
+			combat_item.value = item.value
+			combat_item.usable_type = GameItem.get_usable_type(item.usable_type)
+			combat_item.effect = item.effect
+			items.append(combat_item)
 		else:
 			print_debug("Not implemented yet")
 

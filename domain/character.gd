@@ -27,6 +27,9 @@ func increase_experience(amount: int) -> bool:
 func increase_bits(amount: int):
 	bits += amount
 
+func decrease_bits(amount: int):
+	bits -= amount
+	
 func level_up():
 	level += 1
 	experience_required = get_required_experience(level)
@@ -56,6 +59,16 @@ func add_item(new_item: GameItem):
 				item.quantity += new_item.quantity
 	else:
 		items.push_front(new_item)
-	
+
+func remove_item(id: int):
+	var position = 0
+	for item in items:
+		if item.id == id:
+			item.quantity -= 1
+			if item.quantity == 0:
+				items.remove(position)
+			break
+		position += 1
+
 func is_chest_open(id: int) -> bool:
 	return open_chests.has(id)
