@@ -5,7 +5,7 @@
         "value": 50,
         "usable_type": 1,
         "type": 1,
-        "effect": "50"
+        "effect": 50
     },
     {
         "name": "Bomb",
@@ -13,6 +13,6 @@
         "value": 10,
         "usable_type": 2,
         "type": 2,
-        "effect": "50"
+        "effect": 50
     }
 ] 

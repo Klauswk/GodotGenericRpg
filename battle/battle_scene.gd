@@ -5,8 +5,11 @@ onready var enemy_current_hp = $HBoxContainer/hpContainer/lbCurrentHp
 onready var lb_enemy = $HBoxContainer/enemyName
 
 onready var btnAttack = $player_gui/vboxActions/btnAtk
+onready var btnItem = $player_gui/vboxActions/btnItem
 onready var btnRun = $player_gui/vboxActions/btnRun
 onready var ctrlPlayerGui: Control = $player_gui
+
+onready var item_menu = $item_menu
 
 onready var textBox = $textbox
 
@@ -27,7 +30,13 @@ func _ready():
 	enemy_current_hp.text = str(enemy.current_hp, "/", enemy.max_hp)
 	
 	btnAttack.connect("pressed", self, "_on_btn_attack")
+	btnItem.connect("pressed", self, "_on_btn_item")
 	btnRun.connect("pressed", self, "_on_btn_run")
+
+	item_menu.initialize(character, enemy)
+	item_menu.hide_menu()
+	
+	item_menu.connect("item_use", self, "_on_item_use")
 	
 func _input(event):
 	if (event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_cancel")) && !ctrlPlayerGui.visible:
@@ -41,7 +50,7 @@ func _on_player_defeated():
 	show_text("You got defeated!")
 	yield(textBox, "finished")
 	emit_signal("battle_end")
-
+	
 func _on_enemy_defeated():
 	show_text(str("Gain exp of ", enemy.experience, " and ", enemy.bits, " bits!"))
 	yield(textBox, "finished")
@@ -53,6 +62,9 @@ func _on_enemy_defeated():
 		yield(textBox, "finished")
 		
 	emit_signal("battle_end")
+
+func _on_btn_item():
+	item_menu.show_menu()
 
 func _on_btn_run():
 	var chance_to_escape = (randi() % 20) + max(0, character.speed - enemy.speed)
@@ -124,7 +136,7 @@ func calculate_damage(attacker: Entity, defender: Entity) -> int:
 	return int(max(0, attacker.strength - defender.defense))
 
 func chance_to_miss(attacker: Entity, defender: Entity) -> bool:
-	var miss = ((randi() % 5) + max(0, attacker.speed - defender.speed)) < 5
+	var miss = ((randi() % 20) + max(0, attacker.speed - defender.speed)) < 5
 
 	if miss:
 		emit_signal("miss_attack", attacker)
@@ -137,3 +149,27 @@ func show_text(text):
 
 func _on_textbox_finished():
 	ctrlPlayerGui.show()
+
+func _on_item_use(item: GameItem, text: String):
+	item_menu.hide_menu()
+	show_text(text)
+	yield(textBox, "finished")
+	if enemy.current_hp > 0:
+		if !chance_to_miss(enemy,character):
+			var damage = calculate_damage(enemy, character)
+			character.take_damage(damage)
+			show_text(str("You took ", damage))
+			yield(textBox, "finished")
+		else:
+			show_text(str(enemy.combat_name," miss!"))
+			yield(textBox, "finished")
+			
+	character_current_hp.text = str(character.current_hp, "/", character.max_hp)
+	enemy_current_hp.text = str(enemy.current_hp, "/", enemy.max_hp)
+	
+	if character.current_hp <= 0:
+		_on_player_defeated()
+	elif enemy.current_hp <= 0:
+		_on_enemy_defeated()
+	else:
+		btnItem.grab_focus()

@@ -4,6 +4,7 @@ class_name CombatItem
 
 func _init():
 	effect_type = EFFECT_TYPE.DAMAGE
+	usable_type = USABLE_TYPE.USABLE_BATTLE
 
 func use(attacker: Entity, defender: Entity):
 	var damage = effect + floor(attacker.strength / 2)

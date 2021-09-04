@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://battle/battle_scene.gd" type="Script" id=1]
 [ext_resource path="res://textbox/textbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menu/item_menu/item_menu.tscn" type="PackedScene" id=3]
 
 [node name="battle_scene" type="Control"]
 anchor_right = 1.0
@@ -19,7 +20,7 @@ __meta__ = {
 }
 
 [node name="vboxActions" type="VBoxContainer" parent="player_gui"]
-margin_top = 63.0
+margin_top = 35.0
 margin_right = 124.0
 margin_bottom = 110.0
 rect_pivot_offset = Vector2( 65.8566, -43.1543 )
@@ -32,10 +33,16 @@ margin_right = 124.0
 margin_bottom = 20.0
 text = "Attack"
 
-[node name="btnRun" type="Button" parent="player_gui/vboxActions"]
+[node name="btnItem" type="Button" parent="player_gui/vboxActions"]
 margin_top = 24.0
 margin_right = 124.0
 margin_bottom = 44.0
+text = "Item"
+
+[node name="btnRun" type="Button" parent="player_gui/vboxActions"]
+margin_top = 48.0
+margin_right = 124.0
+margin_bottom = 68.0
 text = "Run"
 
 [node name="vboxInfo" type="VBoxContainer" parent="player_gui"]
@@ -121,5 +128,7 @@ text = "20/20"
 [node name="textbox" parent="." instance=ExtResource( 2 )]
 offset = Vector2( 0, 70 )
 transform = Transform2D( 1, 0, 0, 1, 0, 70 )
+
+[node name="item_menu" parent="." instance=ExtResource( 3 )]
 
 [connection signal="finished" from="textbox" to="." method="_on_textbox_finished"]

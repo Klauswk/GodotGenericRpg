@@ -6,7 +6,10 @@ onready var itemList: ItemList = $itemList
 onready var popupPanel: PopupPanel = $PopupMenu
 onready var optionList: ItemList = $PopupMenu/optionList
 
-var character
+var character: Character
+var enemy: Enemy
+
+signal item_use(item, text)
 
 func _ready():
 	itemList.select_mode = ItemList.SELECT_SINGLE
@@ -15,8 +18,9 @@ func _ready():
 	itemList.connect("item_activated", self, "on_item_select")
 	optionList.connect("item_activated", self, "on_option_select")
 	
-func initialize(character: Character ):
+func initialize(character: Character, enemy: Enemy = null):
 	self.character = character
+	self.enemy = enemy
 
 func on_option_select(index: int):
 	if "Use" in optionList.get_item_text(index):
@@ -24,9 +28,23 @@ func on_option_select(index: int):
 		for select in selecteds:
 			var item: GameItem = character.items[select]
 			
+			if enemy != null && item.usable_type == GameItem.USABLE_TYPE.USABLE_BATTLE:
+				item.connect("use", self, "on_item_use")
+				item.use(character, enemy)
+			elif item.usable_type == GameItem.USABLE_TYPE.USABLE_ANYWHERE:
+				item.connect("use", self, "on_item_use")
+				item.use(character, null)
+			
 	elif "Exit" in optionList.get_item_text(index):
 		popupPanel.hide()
 		itemList.grab_focus()
+
+func on_item_use(item: GameItem, text: String):
+	character.remove_item(item.id)
+	load_item_list()
+	popupPanel.hide()
+	itemList.grab_focus()
+	emit_signal("item_use", item, text)
 
 func on_item_select(index: int):
 	var item: GameItem = character.items[index]
