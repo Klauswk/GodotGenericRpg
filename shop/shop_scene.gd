@@ -53,8 +53,12 @@ func _ready():
 	sellOptionList.connect("item_activated", self, "on_option_sell_select")
 	
 	shop_list.clear()
+	var count = 0
 	for item in ItemService.items:
-		shop_list.add_item(str(item.item_name, " - ", item.value, " bits"))
+		if item.usable_type != GameItem.USABLE_TYPE.SPECIAL:
+			shop_list.add_item(str(item.item_name, " - ", item.value, " bits"))
+			shop_list.set_item_metadata(count, item)
+			count += 1
 	
 	shopOptionList.clear()
 	shopOptionList.add_item("Buy")
@@ -83,8 +87,11 @@ func _on_btn_sell_pressed():
 
 func update_sell_list():
 	player_list.clear()
+	var count = 0
 	for item in character.items:
 		player_list.add_item(str(item.item_name, " - ", item.value * 0.2, " bits"))
+		player_list.set_item_metadata(count, item)
+		count += 1
 
 func on_item_buy_select(index: int):
 	var item: GameItem = ItemService.items[index]
@@ -97,11 +104,11 @@ func on_option_buy_select(index: int):
 	if "Buy" in shopOptionList.get_item_text(index):
 		var selected = shop_list.get_selected_items()
 		
-		var item: GameItem = ItemService.items[selected[0]]
-				
+		var item: GameItem = shop_list.get_item_metadata(selected[0])
+
 		if self.character.bits >= item.value:
 			self.character.decrease_bits(item.value)
-			self.character.add_item(item)
+			self.character.add_item(ItemService.build_new_item(item))
 			buy_sub_menu.hide()
 			shop_list.grab_focus()
 			

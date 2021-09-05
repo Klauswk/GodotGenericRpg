@@ -55,8 +55,9 @@ func _on_btn_load():
 		
 		for obj in game_data.items:
 			var item = ItemService.find_by_id(obj.item_id)
-			item.quantity = obj.quantity
-			item_list.append(item)
+			var new_item = ItemService.build_new_item(item)
+			new_item.quantity = obj.quantity
+			item_list.append(new_item)
 		
 		player.character.items = item_list
 		

@@ -1,18 +1,23 @@
 [
     {
-        "name": "Small Potion",
+        "item_name": "Bits",
+        "id": 0,
+        "value": 0,
+        "usable_type": 3,
+        "effect": 0
+    },
+    {
+        "item_name": "Small Potion",
         "id": 1,
         "value": 50,
         "usable_type": 1,
-        "type": 1,
         "effect": 50
     },
     {
-        "name": "Bomb",
+        "item_name": "Bomb",
         "id": 2,
         "value": 10,
         "usable_type": 2,
-        "type": 2,
         "effect": 50
     }
 ] 

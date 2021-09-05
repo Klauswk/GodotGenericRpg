@@ -4,6 +4,7 @@ class_name HealingItem
 
 func _init():
 	effect_type = EFFECT_TYPE.HEALING
+	usable_type = USABLE_TYPE.USABLE_ANYWHERE
 
 func use(attacker: Entity, defender: Entity):
 	if attacker.max_hp == attacker.current_hp:

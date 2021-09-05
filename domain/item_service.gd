@@ -34,26 +34,35 @@ func load_file_content(file_name: String, path: String):
 		print("Error: ", result_json.error)
 		print("Error Line: ", result_json.error_line)
 		print("Error String: ", result_json.error_string)
-			
+
 	for item in file_items:
-		if item.type == 1:
-			var healing_item = HealingItemClass.new()
-			healing_item.item_name = item.name
-			healing_item.id = item.id
-			healing_item.value = item.value
-			healing_item.usable_type = GameItem.get_usable_type(item.usable_type)
-			healing_item.effect = item.effect
-			items.append(healing_item)
-		if item.type == 2:
-			var combat_item = CombatItemClass.new()
-			combat_item.item_name = item.name
-			combat_item.id = item.id
-			combat_item.value = item.value
-			combat_item.usable_type = GameItem.get_usable_type(item.usable_type)
-			combat_item.effect = item.effect
-			items.append(combat_item)
-		else:
-			print_debug("Not implemented yet")
+		items.append(build_new_item(item))
+
+func build_new_item(item) -> GameItem:
+	if item.usable_type == 1:
+		var healing_item = HealingItemClass.new()
+		healing_item.item_name = item.item_name
+		healing_item.id = item.id
+		healing_item.value = item.value
+		healing_item.effect = item.effect
+		return healing_item
+	elif item.usable_type == 2:
+		var combat_item = CombatItemClass.new()
+		combat_item.item_name = item.item_name
+		combat_item.id = item.id
+		combat_item.value = item.value
+		combat_item.effect = item.effect
+		return combat_item
+	elif item.usable_type == 3:
+		var special = GameItem.new()
+		special.item_name = item.item_name
+		special.id = item.id
+		special.value = item.value
+		special.effect = item.effect
+		return special
+	else:
+		print_debug("Not implemented yet")
+		return null
 
 func find_by_id(id: int) -> GameItem:
 	for item in items:

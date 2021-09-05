@@ -41,6 +41,9 @@ func _ready():
 func _input(event):
 	if (event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_cancel")) && !ctrlPlayerGui.visible:
 		textBox.nextText()
+	elif item_menu.visible() && event.is_action_pressed("ui_cancel"):
+		item_menu.hide_menu()
+		btnItem.grab_focus()
 
 func initialize(_character: Character, _enemy: Enemy):
 	character = _character

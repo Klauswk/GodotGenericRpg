@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="9">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="25" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="11">
  <properties>
   <property name="battle" type="bool" value="true"/>
  </properties>
@@ -55,5 +55,12 @@
   </object>
   <object id="6" name="npc_save" x="176" y="32" width="16" height="16"/>
   <object id="7" name="npc_shop" x="168" y="128" width="16" height="16"/>
+  <object id="10" name="Chest_2" type="chest" x="136" y="160" width="16" height="16">
+   <properties>
+    <property name="id" type="int" value="2"/>
+    <property name="item_id" value="0"/>
+    <property name="quantity" type="int" value="200"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
