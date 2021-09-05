@@ -99,6 +99,7 @@ func _on_player_change_map(next_map, position_x, position_y):
 	for game in get_tree().get_nodes_in_group("game"):
 		game.add_child(next_map)
 		game.scene = next_map
+		game.connect_to_shop(next_map)
 	
 func _on_text_show(text: String):
 	self.textBox.set_text(text)

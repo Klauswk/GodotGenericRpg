@@ -113,7 +113,7 @@ func on_option_buy_select(index: int):
 			shop_list.grab_focus()
 			
 	elif "Exit" in shopOptionList.get_item_text(index):
-		shopOptionList.hide()
+		buy_sub_menu.hide()
 		shop_list.grab_focus()
 
 func on_item_sell_select(index: int):

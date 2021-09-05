@@ -33,8 +33,10 @@ func set_map_scene(scene: Node):
 	
 	self.scene = scene
 	
+	connect_to_shop(scene)
+
+func connect_to_shop(scene: Node):
 	scene.connect("open_shop", self, "_on_shop_open")
-	
 	add_child(scene)
 
 func _input(event):
@@ -55,6 +57,7 @@ func _input(event):
 		gameMenu.show_menu()
 
 func _on_shop_open():
+	print_debug("Bateu auqi?")
 	shopMenu.show_menu()
 	_on_menu_open()
 
