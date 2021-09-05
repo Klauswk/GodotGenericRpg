@@ -116,7 +116,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="DW2023"
+config/name="GenericRPG"
 run/main_scene="res://main_title/main_title.tscn"
 config/icon="res://icon.png"
 
@@ -124,6 +124,7 @@ config/icon="res://icon.png"
 
 EnemyService="*res://domain/enemy_service.gd"
 ItemService="*res://domain/item_service.gd"
+TextboxService="*res://textbox/textbox.tscn"
 
 [display]
 

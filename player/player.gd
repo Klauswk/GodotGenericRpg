@@ -55,7 +55,6 @@ func _physics_process(delta):
 		attention_icon.hide()
 		
 	if mapAction != null && actionPress:
-		print_debug("Map action: ", mapAction)
 		mapAction.interact()
 	elif input_vector != Vector2.ZERO:
 		if input_vector.x > 0:

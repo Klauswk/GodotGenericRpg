@@ -57,7 +57,6 @@ func _input(event):
 		gameMenu.show_menu()
 
 func _on_shop_open():
-	print_debug("Bateu auqi?")
 	shopMenu.show_menu()
 	_on_menu_open()
 
